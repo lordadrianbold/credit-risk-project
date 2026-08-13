@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.git/
+.gitignore
+notes.md
+README.md
+# Don't bake the (large) raw dataset into the image — mount it at runtime instead
+data/raw/*.csv
+
+

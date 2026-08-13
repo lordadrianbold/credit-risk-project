@@ -1,0 +1,19 @@
+# Week 1 - data cleaning
+pandas
+numpy
+
+# Week 2 - exploratory analysis
+matplotlib
+seaborn
+
+# Week 3-4 - modeling
+scikit-learn
+xgboost
+imbalanced-learn   # for SMOTE-based class imbalance handling
+
+# Week 5 - model interpretation
+shap
+
+# Optional S3 uploads - only used if S3_BUCKET env var is set
+boto3
+
