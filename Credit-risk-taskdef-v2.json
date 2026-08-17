@@ -1,0 +1,44 @@
+{
+  "family": "credit-risk-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "2048",
+  "memory": "16384",
+  "taskRoleArn": "arn:aws:iam::816069143878:role/ts-forecast-task-role",
+  "executionRoleArn": "arn:aws:iam::816069143878:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "credit-risk-container",
+      "image": "816069143878.dkr.ecr.us-east-1.amazonaws.com/credit-risk-project:latest",
+      "essential": true,
+      "environment": [
+        {
+          "name": "S3_BUCKET",
+          "value": "ts-forecast-project-816069143878"
+        },
+        {
+          "name": "S3_PREFIX",
+          "value": "credit-risk-project/"
+        },
+        {
+          "name": "S3_RAW_DATA_KEY",
+          "value": "credit-risk-project/data/raw/lending_club_loans.csv"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/credit-risk-task",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ]
+}
+
+
+

@@ -44,14 +44,19 @@ RUN chmod +x entrypoint.sh
 # CSV from S3 if it's not already present locally, then hands off to CMD.
 ENTRYPOINT ["./entrypoint.sh"]
 
-# Default: run the full week 1-2 pipeline in order.
+# Default: run the full week 1-5 pipeline in order.
 # Override this at `docker run` time to run a single script instead, e.g.:
-#   docker run <image> python src/check_correlations.py
+#   docker run <image> python src/model_interpret.py
 CMD ["sh", "-c", "\
     python src/audit_data.py && \
     python src/clean_data.py && \
     python src/explore_features.py && \
-    python src/check_correlations.py \
+    python src/check_correlations.py && \
+    python src/model_logistic.py && \
+    python src/model_trees.py && \
+    python src/model_interpret.py \
 "]
+
+
 
 
